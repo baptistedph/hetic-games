@@ -27,13 +27,16 @@ class Game:
     self.walls: list = []
     self.volume = 0.5
     self.synopsis = '''
-Un étudiant venant d’arriver a hetic a pour quête de télécharger un fichier qui est le sujet de son devoir.\n
+Un étudiant venant d’arriver a HETIC a pour quête de télécharger un fichier qui est le sujet de son devoir.\n
 Il doit télécharger au plus vite le fichier pour pouvoir rendre le devoir dans les temps.\n
 \n
 Il doit donc dans un premier temps trouver le code du wifi !\n
 Mais attention Brontis s’est levé du mauvais pied aujourd’hui et d’humeur dévastante.\n
 Il faut à tout prix l’éviter car il pourrait te faire perdre des vies.\n
 Si Brontis t’attrape tu devras répondre à ses questions barbantes sur la culture GEEK !!\n
+\n
+Si tu réponds bien, tu augmentes ta vitesse de téléchargement.\n
+Dans le cas contraire, c'est l'inverse, ton téléchargement devient plus lent.\n
 \n
 Bon courage !
     '''
@@ -97,7 +100,7 @@ Bon courage !
     self.menu_image = pygame.image.load('assets/images/menu.png')
     self.menu_image_rect = self.menu_image.get_rect()
     self.menu_image_rect.x = 50
-    self.menu_image_rect.y = 800
+    self.menu_image_rect.y = 850
 
     # load menu button sprite
     self.submit_image = pygame.image.load('assets/images/submit.png')
@@ -181,7 +184,7 @@ Bon courage !
       splited_text = self.synopsis.split('\n')
       for i, line in enumerate(splited_text):
         text = self.label.render(line, False, (255, 255, 225))
-        self.screen.blit(text, (50, 200 + i * 30))
+        self.screen.blit(text, (50, 200 + i * 25))
       self.screen.blit(self.menu_image, self.menu_image_rect)
     
     # game over & win screens

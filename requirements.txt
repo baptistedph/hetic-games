@@ -1,0 +1,4 @@
+pygame==2.1.0
+pyscroll==2.29
+pygame_textinput==1.0.1
+pytmx==3.31

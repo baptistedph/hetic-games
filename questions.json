@@ -77,5 +77,39 @@
       "4. Dark Souls (clin d'oeil, clin d'oeil)"
     ],
     "answer": "1. League of Legends"
+  },
+  {
+    "id": 9,
+    "question": "Parmi ces acteurs, lequel n’a pas joué le rôle du Joker ?",
+    "choices": [
+      "1.Michael Keaton ",
+      "2.Heath Ledger ",
+      "3.Jack Nicholson ",
+      "4.Cesar Romero "
+    ],
+    "answer": "1.Michael Keaton"
+  },
+  {
+    "id": 10,
+    "question": "Quel super-héros n’a pas eu droit à sa propre série sur Netflix ?",
+    "choices": ["1. Dardevil", "2. Ironfist", "3. Spiderman"],
+    "answer": "3. Spiderman"
+  },
+  {
+    "id": 11,
+    "question": "Combien coûte un Bitcoin à l'heure actuelle",
+    "choices": ["1. 40 000€", "2. 3€", "3. 60 000€"],
+    "answer": "1. 40 000€"
+  },
+  {
+    "id": 12,
+    "question": "Qui a inventé le language C",
+    "choices": [
+      "1. Dennis Ritchie",
+      "2. Tony Parker",
+      "3. Bruno Simon",
+      "4. Alan Turing"
+    ],
+    "answer": "1. Dennis Ritchie"
   }
 ]
