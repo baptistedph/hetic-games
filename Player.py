@@ -1,12 +1,13 @@
 import pygame
 
 class Player(pygame.sprite.Sprite):
+  # constructor init
   def __init__(self, x, y, speed, sprite) -> None:
     # call the super class Sprite from pygame
     super().__init__()
-  
     # load player sprite
     self.image = pygame.image.load(sprite)
+
     # resize sprite
     self.image = pygame.transform.scale(self.image, (16, 16))
     
@@ -22,15 +23,17 @@ class Player(pygame.sprite.Sprite):
     # set player speed
     self.speed: int = speed
 
-    self.lives = 3
+    # set player lives
+    self.lives: int = 3
 
-    self.protected = True
+    # set if protected or not for brontis's questions
+    self.protected: bool = False
 
   # save last player position at each frame
   def save_location(self) -> None: 
     self.old_position = self.position.copy()
 
-  ### move functions
+  # move functions
   def move_right(self) -> None: 
     self.position[0] += self.speed
 
@@ -42,7 +45,6 @@ class Player(pygame.sprite.Sprite):
 
   def move_down(self) -> None: 
     self.position[1] += self.speed
-  ###
 
   # move back to the last position if collide
   def move_back(self) -> None:

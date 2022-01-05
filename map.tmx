@@ -2,7 +2,7 @@
 <map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="46" nextobjectid="125">
  <tileset firstgid="1" source="tiles/interior.tsx"/>
  <tileset firstgid="1765" source="tiles/house.tsx"/>
- <tileset firstgid="2540" source="phone.tsx"/>
+ <tileset firstgid="2540" source="tiles/phone.tsx"/>
  <layer id="39" name="floor" width="30" height="20">
   <data encoding="csv">
 2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,2064,
