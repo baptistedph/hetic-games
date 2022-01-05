@@ -1,0 +1,81 @@
+[
+  {
+    "id": 0,
+    "question": "Qui est le créateur de Mario ?",
+    "choices": [
+      "1. Shigeru Miyamoto",
+      "2. Fumito Ueda",
+      "3. Goichi Suda",
+      "4. Hideki Kamiya"
+    ],
+    "answer": "1. Shigeru Miyamoto"
+  },
+  {
+    "id": 1,
+    "question": "En quelle année est sortie la toute\npremière Playstation en France ?",
+    "choices": ["1. 2001", "2. 1998", "3. 1995", "4. 2007"],
+    "answer": "3. 1995"
+  },
+  {
+    "id": 2,
+    "question": "Dans la serie Star Trek,\nquelle est la désignation d'un planète du meme\n type que la planète Terre ?",
+    "choices": ["1. Classe T", "2. Classe E", "3. Classe M"],
+    "answer": "3. Classe M"
+  },
+  {
+    "id": 3,
+    "question": "Quel est le jeu le plus vendu au monde ?",
+    "choices": [
+      "1. Tetris",
+      "2. Minecraft",
+      "3. GTA 5",
+      "4. Paris-Marseille Racing 2"
+    ],
+    "answer": "2. Minecraft"
+  },
+  {
+    "id": 4,
+    "question": "Complétez cette suite “logique” : Windows 7,\nWindows 8, Windows …?",
+    "choices": ["1. XP", "2. 9", "3. 10"],
+    "answer": "3. 10"
+  },
+  {
+    "id": 5,
+    "question": "Quel téléphone peut servir d'arme ?",
+    "choices": [
+      "1. Iphone 6",
+      "2. Nokkia 3310",
+      "3. Huawei P20 Pro",
+      "4. Attends, un téléphone peut servir d'arme ?"
+    ],
+    "answer": "2. Nokkia 3310"
+  },
+  {
+    "id": 6,
+    "question": "Ctrl + Q permet de ?",
+    "choices": [
+      "1. Ouvrir un ficher ?",
+      "2. Recharger la page ?",
+      "3. Fermer les applications en cours ?",
+      "4. Commander UberEats ?"
+    ],
+    "answer": "3. Fermer les applications en cours ?"
+  },
+  {
+    "id": 7,
+    "question": "A l'origine, comment devait s'appeler le jeux video pacman ?",
+    "choices": ["1. Pukman", "2. Luckman", "3. Goman", "4. Eatman"],
+    "answer": "1. Pukman"
+  },
+  {
+    "id": 8,
+    "question": "Quelle est la communauté de joueurs qui se lave le moins ?",
+    "choices": [
+      "1. League of Legends",
+      "2. Fortnite",
+      "3. Warzone",
+      "4. Dark Souls (clin d'oeil, clin d'oeil)"
+    ],
+    "answer": "1. League of Legends"
+  }
+]

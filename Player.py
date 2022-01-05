@@ -1,12 +1,14 @@
 import pygame
 
 class Player(pygame.sprite.Sprite):
-  def __init__(self, x, y) -> None:
+  def __init__(self, x, y, speed, sprite) -> None:
     # call the super class Sprite from pygame
     super().__init__()
   
     # load player sprite
-    self.image = pygame.image.load('assets/images/player.png')
+    self.image = pygame.image.load(sprite)
+    # resize sprite
+    self.image = pygame.transform.scale(self.image, (16, 16))
     
     # get player hitbox
     self.rect = self.image.get_rect()
@@ -18,7 +20,11 @@ class Player(pygame.sprite.Sprite):
     self.old_position = self.position.copy()
 
     # set player speed
-    self.speed: int = 2
+    self.speed: int = speed
+
+    self.lives = 3
+
+    self.protected = True
 
   # save last player position at each frame
   def save_location(self) -> None: 
