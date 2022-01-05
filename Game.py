@@ -109,7 +109,7 @@ class Game:
     
     # phone position
     phone_position = tmx_data.get_object_by_name('phone')
-    self.phone = Object(phone_position.x, phone_position.y, 'assets/audio/page.mp3', 'assets/images/phone.png')
+    self.phone = Object(phone_position.x, phone_position.y, 'assets/audio/phone.mp3', 'assets/images/phone.png')
 
     # download progress label
     self.download_progress_text = self.label.render(f'Téléchargement du devoir en cours ({round(self.download * 100)}%)', False, (255, 255, 255))
@@ -152,6 +152,7 @@ class Game:
     
     # game over & win screens
     if self.current_screen == 3 or self.current_screen == 4:
+      pygame.mixer.music.stop()
       self.screen.blit(self.restart_image, self.restart_image_rect)
       
 
