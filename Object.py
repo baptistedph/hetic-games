@@ -8,7 +8,6 @@ class Object:
     self.image = pygame.image.load(sprite_path)
     self.image_width: float = self.image.get_rect().width
     self.image_height: float = self.image.get_rect().height
-
     self.page = pygame.mixer.Sound(sound)
 
   # display or hide object

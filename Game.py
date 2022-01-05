@@ -18,7 +18,7 @@ class Game:
     self.question = None
     self.game_over: bool = False
     self.initial_time: int = 0
-    self.cooldown: int = 1
+    self.cooldown: int = 3
     self.download: int = 0
     self.current_screen: int = 1
     self.wifi_speed: int = 700
@@ -26,6 +26,17 @@ class Game:
     self.choices: list = []
     self.walls: list = []
     self.volume = 0.5
+    self.synopsis = '''
+Un étudiant venant d’arriver a hetic a pour quête de télécharger un fichier qui est le sujet de son devoir.\n
+Il doit télécharger au plus vite le fichier pour pouvoir rendre le devoir dans les temps.\n
+\n
+Il doit donc dans un premier temps trouver le code du wifi !\n
+Mais attention Brontis s’est levé du mauvais pied aujourd’hui et d’humeur dévastante.\n
+Il faut à tout prix l’éviter car il pourrait te faire perdre des vies.\n
+Si Brontis t’attrape tu devras répondre à ses questions barbantes sur la culture GEEK !!\n
+\n
+Bon courage !
+    '''
 
     # init window
     if self.fullscreen:
@@ -68,7 +79,7 @@ class Game:
     self.start_image = pygame.image.load('assets/images/start.png')
     self.start_image_rect = self.start_image.get_rect()
     self.start_image_rect.x = self.screen_width / 2 - self.start_image_rect.width / 2
-    self.start_image_rect.y = 700
+    self.start_image_rect.y = 650
 
     # load restart button sprite
     self.restart_image = pygame.image.load('assets/images/restart.png')
@@ -76,7 +87,19 @@ class Game:
     self.restart_image_rect.x = self.screen_width / 2 - self.restart_image_rect.width / 2
     self.restart_image_rect.y = 700
 
+    # load synopsis button sprite
+    self.synopsis_image = pygame.image.load('assets/images/synopsis.png')
+    self.synopsis_image_rect = self.synopsis_image.get_rect()
+    self.synopsis_image_rect.x = self.screen_width / 2 - self.synopsis_image_rect.width / 2
+    self.synopsis_image_rect.y = 750
+
     # load submit button sprite
+    self.menu_image = pygame.image.load('assets/images/menu.png')
+    self.menu_image_rect = self.menu_image.get_rect()
+    self.menu_image_rect.x = 50
+    self.menu_image_rect.y = 800
+
+    # load menu button sprite
     self.submit_image = pygame.image.load('assets/images/submit.png')
     self.submit_image_rect = self.submit_image.get_rect()
     self.submit_image_rect.x = self.screen_width / 2 - self.submit_image_rect.width / 2 + 190
@@ -135,6 +158,7 @@ class Game:
       self.screen.fill('#402EA9')
       self.screen.blit(self.logo_image, (self.screen_width / 2 - self.logo_image.get_rect().width / 2, 100))
       self.screen.blit(self.start_image, self.start_image_rect)
+      self.screen.blit(self.synopsis_image, self.synopsis_image_rect)
     # main screen
     elif self.current_screen == 2:
       self.group.draw(self.screen)
@@ -149,6 +173,16 @@ class Game:
       self.screen.fill('#402EA9')
       title = self.title.render('Vous avez réussi à télécharger votre devoir !', False, (255, 255, 255))
       self.screen.blit(title, (self.screen_width / 2 - title.get_rect().width / 2, 200))
+    # synopsis screen
+    elif self.current_screen == 5:
+      self.screen.fill('#402EA4')
+      title = self.title.render('Synopsis', False, (255, 255, 255))
+      self.screen.blit(title, (50, 100))
+      splited_text = self.synopsis.split('\n')
+      for i, line in enumerate(splited_text):
+        text = self.label.render(line, False, (255, 255, 225))
+        self.screen.blit(text, (50, 200 + i * 30))
+      self.screen.blit(self.menu_image, self.menu_image_rect)
     
     # game over & win screens
     if self.current_screen == 3 or self.current_screen == 4:
@@ -328,13 +362,12 @@ class Game:
       if self.connected and self.download <= 1:
         self.screen.blit(self.download_progress_text, (20, self.screen_height - 80))
 
-        if not self.is_answering:
-          # draw download bar
-          pygame.draw.rect(self.screen, (255, 255, 255), pygame.Rect(20, self.screen_height - 50, 500, 20))
-          pygame.draw.rect(self.screen, (0, 255, 0), pygame.Rect(20, self.screen_height - 50, 500 * self.download, 20))
+        pygame.draw.rect(self.screen, (255, 255, 255), pygame.Rect(20, self.screen_height - 50, 500, 20))
+        pygame.draw.rect(self.screen, (0, 255, 0), pygame.Rect(20, self.screen_height - 50, 500 * self.download, 20))
 
-          self.download_progress_text = self.label.render(f'Téléchargement du devoir en cours ({round(self.download * 100)}%) - {self.wifi_speed / 1000}Gbits/s', False, (255, 255, 255))
-          
+        self.download_progress_text = self.label.render(f'Téléchargement du devoir en cours ({round(self.download * 100)}%) - {self.wifi_speed / 1000}Gbits/s', False, (255, 255, 255))
+
+        if not self.is_answering:
           self.download += self.wifi_speed / 10000000
       # when the download is done, then we switch to the win screen
       if self.download >= 1:
@@ -370,6 +403,9 @@ class Game:
             # start music
             pygame.mixer.music.play(-1)
             self.current_screen = 2
+          # user clicked on the synopsis button
+          if self.synopsis_image_rect.collidepoint(event.pos) and self.current_screen == 1:
+            self.current_screen = 5
           # user clicked the connect button
           if self.submit_image_rect.collidepoint(event.pos) and self.current_screen == 2:
             # check if the user input is the same as the wifi password
@@ -382,6 +418,9 @@ class Game:
           # user clicked on restart
           if self.restart_image_rect.collidepoint(event.pos) and (self.current_screen == 3 or self.current_screen == 4):
             self.__init__()
+          # user clicked on validate answer
+          if self.menu_image_rect.collidepoint(event.pos) and self.current_screen == 5:
+            self.current_screen = 1
 
       # refresh at each frame
       pygame.display.flip()

@@ -16,7 +16,7 @@ class Brontis(Player):
     self.coords: list = [
       [265, 0, 0],
       [0, 240, 0],
-      [-230, 0, 0],
+      [-210, 0, 0],
       [130, -80, 0],
       [100, 0, 0],
       [0, 20, 0],
@@ -37,7 +37,7 @@ class Brontis(Player):
       [30, 0, 0],
       [0, -75, 0],
       [-265, 10, 0],
-      [0, 0, 1000]
+      [0, 0, 600]
     ]
     self.questions: str = loads(open("questions.json", "r").read())
     self.floor: list = [[0, 0] for x in self.coords]
@@ -90,7 +90,8 @@ class Brontis(Player):
         self.pause_current_time += 1
         self.pause = True
       else:
-        self.pause = False
+        if self.game.is_answering == False:
+          self.pause = False
         self.pause_current_time = 0
 
     if not self.pause:
