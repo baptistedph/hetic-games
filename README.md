@@ -1,6 +1,8 @@
-<img src="assets/images/logo.png"
-     alt="Logo"
-     style="width: 200px" />
+<p align="center">
+     <img src="assets/images/logo.png"
+          alt="Logo"
+          style="width: 200px" />
+</p>
 
 # HETIC GAMES
 
